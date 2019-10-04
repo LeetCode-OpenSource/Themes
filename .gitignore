@@ -22,4 +22,5 @@ composer.lock
 
 # Project Specific
 node_modules
+dist
 *.log

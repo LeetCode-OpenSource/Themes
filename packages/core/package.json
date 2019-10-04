@@ -2,8 +2,11 @@
   "name": "@themes/core",
   "version": "0.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "scripts": {
+    "clean": "rm -rf ./dist",
+    "build": "yarn run clean && tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

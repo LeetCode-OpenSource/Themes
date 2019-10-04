@@ -10,6 +10,8 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "lerna": "^3.16.4"
+    "lerna": "^3.16.4",
+    "tslib": "^1.10.0",
+    "typescript": "^3.6.3"
   }
 }
