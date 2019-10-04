@@ -10,15 +10,25 @@
   },
   "license": "MIT",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "lint": "yarn lint:eslint && yarn lint:tsc",
+    "lint:eslint": "eslint . --ext .ts,.tsx --fix --max-warnings 0",
+    "lint:tsc": "tsc -p ./tsconfig.json --noEmit"
   },
   "devDependencies": {
     "@types/jest": "^24.0.18",
+    "@typescript-eslint/eslint-plugin": "^2.3.2",
+    "@typescript-eslint/parser": "^2.3.2",
+    "eslint": "^6.5.1",
+    "eslint-config-prettier": "^6.3.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.16.0",
     "husky": ">=1",
     "jest": "^24.9.0",
     "lerna": "^3.16.4",
     "lint-staged": ">=8",
     "prettier": "^1.18.2",
+    "react": "^16.10.2",
     "ts-jest": "^24.1.0",
     "tslib": "^1.10.0",
     "typescript": "^3.6.3"
@@ -31,6 +41,7 @@
   "lint-staged": {
     "*.{ts,tsx}": [
       "prettier --write",
+      "yarn run lint:eslint",
       "git add"
     ]
   }
