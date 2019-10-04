@@ -1,0 +1,15 @@
+{
+  "name": "themes-monorepo",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeetCode-OpenSource/themes.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "lerna": "^3.16.4"
+  }
+}
