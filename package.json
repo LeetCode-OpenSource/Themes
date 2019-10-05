@@ -13,7 +13,8 @@
     "test": "jest",
     "lint": "yarn lint:eslint && yarn lint:tsc",
     "lint:eslint": "eslint . --ext .ts,.tsx --fix --max-warnings 0",
-    "lint:tsc": "tsc -p ./tsconfig.json --noEmit"
+    "lint:tsc": "tsc -p ./tsconfig.json --noEmit",
+    "prettier": "prettier 'packages/**/*.@(ts|tsx|html|json)' --write"
   },
   "devDependencies": {
     "@types/jest": "^24.0.18",
