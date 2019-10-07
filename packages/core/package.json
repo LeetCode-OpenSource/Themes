@@ -11,5 +11,8 @@
   },
   "keywords": [],
   "license": "MIT",
-  "devDependencies": {}
+  "devDependencies": {},
+  "dependencies": {
+    "listify": "https://github.com/Runjuu/listify.git"
+  }
 }
