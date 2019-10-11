@@ -10,6 +10,7 @@
   },
   "license": "MIT",
   "scripts": {
+    "bootstrap": "lerna bootstrap",
     "test": "jest",
     "lint": "yarn lint:eslint && yarn lint:tsc",
     "lint:eslint": "eslint . --ext .ts,.tsx --fix --max-warnings 0",
