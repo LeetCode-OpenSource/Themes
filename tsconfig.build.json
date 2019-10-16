@@ -5,6 +5,7 @@
   ],
   "exclude": [
     "**/dist",
+    "**/demo",
     "node_modules",
     "**/node_modules",
     "**/__tests__",
