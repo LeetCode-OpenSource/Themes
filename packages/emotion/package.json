@@ -12,6 +12,13 @@
   "publishConfig": {
     "access": "public"
   },
+  "devDependencies": {
+    "@emotion/core": "^10.0.21",
+    "@emotion/styled": "^10.0.17",
+    "@themes/react": "^0.0.2",
+    "@themes/scheme": "^0.0.2",
+    "emotion-theming": "^10.0.19"
+  },
   "peerDependencies": {
     "@emotion/core": "^10.0.21",
     "@emotion/styled": "^10.0.17",
