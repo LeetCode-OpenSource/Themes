@@ -15,7 +15,7 @@
   "keywords": [],
   "license": "MIT",
   "peerDependencies": {
-    "@themes/scheme": "^0.0.1",
+    "@themes/scheme": "^0.0.2",
     "react": "^16.10.2"
   }
 }

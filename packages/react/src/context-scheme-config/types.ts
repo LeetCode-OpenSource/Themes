@@ -8,7 +8,7 @@ export type ContextSchemeConfig<
   SchemeConfig<SchemeKey, Scheme> & {
     Context: React.Context<SchemeKey>
     transform: <SK extends SchemeKeyType, S extends SchemeValueType>(
-      asset: SchemeConfig<SK, (scheme: Scheme) => S>,
+      transformerSchemeConfig: SchemeConfig<SK, (scheme: Scheme) => S>,
     ) => SchemeConfig<SK, () => S>
   }
 >
