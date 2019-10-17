@@ -1,4 +1,4 @@
-import styled from '@emotion/styled'
+import { styled } from '~/src/colors'
 
 export interface ButtonColorScheme {
   backgroundColor: string

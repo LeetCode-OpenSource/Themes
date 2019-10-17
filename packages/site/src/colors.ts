@@ -1,4 +1,5 @@
 import { createContextSchemeConfig } from '@themes/react'
+import { setupEmotion } from '@themes/emotion'
 
 export enum ColorsTheme {
   light = 'light',
@@ -90,4 +91,8 @@ export const colors = createContextSchemeConfig<ColorsTheme, ColorsScheme>({
       red0: '#461615',
     },
   },
+})
+
+export const { styled, globalStyle, useColors, ColorsProvider, ColorsConsumer } = setupEmotion({
+  colors,
 })
