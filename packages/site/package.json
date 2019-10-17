@@ -1,0 +1,29 @@
+{
+  "name": "themes-site",
+  "private": true,
+  "version": "0.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "dev": "node_modules/.bin/parcel ./index.html",
+    "build": "yarn run clean && node_modules/.bin/parcel build ./index.html --out-dir ./dist --public-url ./",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "dependencies": {
+    "@emotion/core": "^10.0.21",
+    "@emotion/styled": "^10.0.17",
+    "@themes/react": "^0.0.1",
+    "@themes/schemes": "^0.0.1",
+    "emotion-theming": "^10.0.19",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.7",
+    "@types/react-dom": "^16.9.2",
+    "parcel-bundler": "^1.12.4"
+  }
+}

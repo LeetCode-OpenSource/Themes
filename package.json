@@ -2,7 +2,8 @@
   "name": "themes-monorepo",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "site"
   ],
   "repository": {
     "type": "git",
