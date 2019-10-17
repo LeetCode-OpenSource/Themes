@@ -1,3 +1,3 @@
-# @themes/asset
+# @themes/scheme
 
 Work in process.
