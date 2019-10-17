@@ -1,3 +1,3 @@
-export * from './create-context-asset'
-export * from './use-context-asset'
+export * from './create-context-scheme-config'
+export * from './use-context-scheme-config'
 export * from './types'

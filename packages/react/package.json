@@ -14,10 +14,8 @@
   },
   "keywords": [],
   "license": "MIT",
-  "dependencies": {
-    "@themes/asset": "^0.0.1"
-  },
   "peerDependencies": {
+    "@themes/scheme": "^0.0.1",
     "react": "^16.10.2"
   }
 }

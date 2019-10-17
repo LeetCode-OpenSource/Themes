@@ -1,11 +1,14 @@
 import * as React from 'react'
-import { Asset, AssetThemesType } from '@themes/asset'
+import { SchemeConfig, SchemeKeyType, SchemeValueType } from '@themes/scheme'
 
-export type ContextAsset<Themes extends AssetThemesType, Schemes> = Readonly<
-  Asset<Themes, Schemes> & {
-    Context: React.Context<Themes>
-    derive: <T extends AssetThemesType, S>(
-      asset: Asset<T, (context: Schemes) => S>,
-    ) => Asset<T, () => S>
+export type ContextSchemeConfig<
+  SchemeKey extends SchemeKeyType,
+  Scheme extends SchemeValueType
+> = Readonly<
+  SchemeConfig<SchemeKey, Scheme> & {
+    Context: React.Context<SchemeKey>
+    transform: <SK extends SchemeKeyType, S extends SchemeValueType>(
+      asset: SchemeConfig<SK, (scheme: Scheme) => S>,
+    ) => SchemeConfig<SK, () => S>
   }
 >

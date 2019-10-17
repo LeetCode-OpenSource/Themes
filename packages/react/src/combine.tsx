@@ -1,35 +1,35 @@
 import * as React from 'react'
-import { getAssetScheme, Asset, AssetTheme, AssetScheme, AssetThemesType } from '@themes/asset'
+import { getScheme, SchemeConfig, ValueOfScheme, KeyOfScheme, SchemeKeyType } from '@themes/scheme'
 
 type CombinedProps<Config, Props> = Omit<Props, keyof Config> &
   {
-    [Key in keyof Config]: AssetTheme<Config[Key]>
+    [Key in keyof Config]: KeyOfScheme<Config[Key]>
   }
 
 type CombineResult<Config, Props> = React.FunctionComponent<CombinedProps<Config, Props>>
 
-type ConfigType = { [propName: string]: Asset<any, any> }
+type ConfigType = { [propName: string]: SchemeConfig<any, any> }
 
 export function combine<
   Config extends ConfigType,
   Props extends {
-    [Key in keyof Config]: AssetScheme<Config[Key]>
+    [Key in keyof Config]: ValueOfScheme<Config[Key]>
   }
 >(config: Config, Component: React.ComponentType<Props>): CombineResult<Config, Props> {
-  type ConfigKeys = Extract<keyof Config, keyof Props>
-  const configKeys = Object.keys(config) as Array<ConfigKeys>
+  type ConfigKey = Extract<keyof Config, keyof Props>
+  const configKeys = Object.keys(config) as Array<ConfigKey>
 
   return function CombinedComponent(props: CombinedProps<Config, Props>) {
-    function getAsset(key: ConfigKeys): Asset<any, any> {
+    function getSchemeConfig(key: ConfigKey): SchemeConfig<any, any> {
       return config[key]
     }
 
-    function getTheme(key: ConfigKeys): AssetThemesType {
+    function getSchemeKey(key: ConfigKey): SchemeKeyType {
       return props[key]
     }
 
     const finalProps = configKeys.reduce(
-      (result, key) => ({ ...result, [key]: getAssetScheme(getAsset(key), getTheme(key)) }),
+      (result, key) => ({ ...result, [key]: getScheme(getSchemeConfig(key), getSchemeKey(key)) }),
       props as any,
     ) as Props
 
