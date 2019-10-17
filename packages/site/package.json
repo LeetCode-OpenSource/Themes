@@ -16,7 +16,7 @@
     "@emotion/core": "^10.0.21",
     "@emotion/styled": "^10.0.17",
     "@themes/react": "^0.0.2",
-    "@themes/schemes": "^0.0.1",
+    "@themes/scheme": "^0.0.2",
     "emotion-theming": "^10.0.19",
     "react": "^16.10.2",
     "react-dom": "^16.10.2"
