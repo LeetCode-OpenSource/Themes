@@ -18,7 +18,6 @@
     "@themes/emotion": "^0.0.7",
     "@themes/react": "^0.0.7",
     "@themes/scheme": "^0.0.7",
-    "@themes/use-dark-mode": "^0.0.7",
     "emotion-theming": "^10.0.19",
     "react": "^16.10.2",
     "react-dom": "^16.10.2"
