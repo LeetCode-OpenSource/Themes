@@ -2,7 +2,13 @@ import * as React from 'react'
 import { ThemeProvider, useTheme } from 'emotion-theming'
 import styled from '@emotion/styled'
 import { css, Global } from '@emotion/core'
-import { getScheme, SchemeKeyType, SchemeValueType } from '@themes/scheme'
+import {
+  getScheme,
+  SchemeConfig,
+  ValueOfScheme,
+  SchemeKeyType,
+  SchemeValueType,
+} from '@themes/scheme'
 import { useContextSchemeConfig } from '@themes/react'
 
 import { SetupEmotionConfig, SetupEmotionResult, StyleFactory } from './types'
@@ -10,14 +16,18 @@ import { SetupEmotionConfig, SetupEmotionResult, StyleFactory } from './types'
 export function setupEmotion<
   ColorsSchemeKey extends SchemeKeyType,
   ColorsScheme extends SchemeValueType
->(
-  config: SetupEmotionConfig<ColorsSchemeKey, ColorsScheme>,
-): SetupEmotionResult<ColorsSchemeKey, ColorsScheme> {
+>(config: SetupEmotionConfig<ColorsSchemeKey, ColorsScheme>) {
+  type ValueOfColorsScheme = ValueOfScheme<SchemeConfig<ColorsSchemeKey, ColorsScheme>>
+
   function useColors() {
-    return useContextSchemeConfig(config.colors)
+    return (useContextSchemeConfig(config.colors) as unknown) as ValueOfColorsScheme
   }
 
-  function ColorsConsumer({ children }: { children: (colors: ColorsScheme) => React.ReactNode }) {
+  function ColorsConsumer({
+    children,
+  }: {
+    children: (colors: ValueOfColorsScheme) => React.ReactNode
+  }) {
     const Consumer = config.colors.Context.Consumer
 
     return (
@@ -47,7 +57,7 @@ export function setupEmotion<
     )
   }
 
-  function globalStyle<EmotionTheme extends { colors: ColorsScheme }>(
+  function globalStyle<EmotionTheme extends { colors: ValueOfColorsScheme }>(
     styleFactory: StyleFactory<EmotionTheme>,
   ) {
     return function GlobalStyle() {
@@ -62,5 +72,5 @@ export function setupEmotion<
     useColors,
     ColorsConsumer,
     ColorsProvider,
-  }
+  } as SetupEmotionResult<ColorsSchemeKey, ValueOfColorsScheme>
 }
