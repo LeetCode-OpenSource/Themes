@@ -15,7 +15,11 @@ type ConfigType = { [propName: string]: SchemeConfig<any, any> }
 export function combine<
   Config extends ConfigType,
   Props extends {
-    [Key in keyof Config]: Config[Key] extends SchemeConfig<any, infer Scheme> ? Scheme : never
+    [Key in keyof Config]: Config[Key] extends SchemeConfig<any, infer S>
+      ? S extends () => infer SS
+        ? SS
+        : S
+      : never
   }
 >(config: Config, Component: React.ComponentType<Props>): CombineResult<Config, Props> {
   type ConfigKey = Extract<keyof Config, keyof Props>
