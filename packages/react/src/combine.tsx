@@ -40,6 +40,6 @@ export function combine<
       finalProps[key] = getScheme(getSchemeConfig(key), getSchemeKey(key))
     })
 
-    return <Component {...finalProps} />
+    return <Component {...props} {...finalProps} />
   }
 }
