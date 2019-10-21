@@ -1,4 +1,4 @@
-import { SchemeConfig, SchemeKeyType, SchemeValueType } from '@themes/scheme'
+import { SchemeConfig, SchemeKeyType, SchemeValueType, ValueOfScheme } from '@themes/scheme'
 
 import { ContextSchemeConfig } from '../types'
 import { useContextSchemeConfig } from '../use-context-scheme-config'
@@ -10,7 +10,10 @@ export function transformByContextSchemeConfig<
   Scheme extends SchemeValueType
 >(
   contextSchemeConfig: ContextSchemeConfig<ContextSchemeKey, ContextScheme>,
-  transformerSchemeConfig: SchemeConfig<SchemeKey, (context: ContextScheme) => Scheme>,
+  transformerSchemeConfig: SchemeConfig<
+    SchemeKey,
+    (context: ValueOfScheme<SchemeConfig<ContextSchemeKey, ContextScheme>>) => Scheme
+  >,
 ) {
   const schemeKeys = Object.keys(transformerSchemeConfig.schemes) as SchemeKey[]
 
@@ -20,7 +23,7 @@ export function transformByContextSchemeConfig<
       (schemes, schemeKey) => ({
         ...schemes,
         [schemeKey]: () => {
-          const scheme = useContextSchemeConfig(contextSchemeConfig) as ContextScheme
+          const scheme = useContextSchemeConfig(contextSchemeConfig)
           return transformerSchemeConfig.schemes[schemeKey](scheme)
         },
       }),
