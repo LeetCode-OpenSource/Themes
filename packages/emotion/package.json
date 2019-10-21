@@ -1,6 +1,6 @@
 {
   "name": "@themes/emotion",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -15,8 +15,8 @@
   "devDependencies": {
     "@emotion/core": "^10.0.21",
     "@emotion/styled": "^10.0.17",
-    "@themes/react": "^0.0.4",
-    "@themes/scheme": "^0.0.4",
+    "@themes/react": "^0.0.5",
+    "@themes/scheme": "^0.0.5",
     "emotion-theming": "^10.0.19"
   },
   "peerDependencies": {
