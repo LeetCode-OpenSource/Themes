@@ -30,10 +30,11 @@ export function combine<
       return props[key]
     }
 
-    const finalProps = configKeys.reduce(
-      (result, key) => ({ ...result, [key]: getScheme(getSchemeConfig(key), getSchemeKey(key)) }),
-      props as any,
-    ) as Props
+    const finalProps = {} as Props
+
+    configKeys.forEach((key) => {
+      finalProps[key] = getScheme(getSchemeConfig(key), getSchemeKey(key))
+    })
 
     return <Component {...finalProps} />
   }
