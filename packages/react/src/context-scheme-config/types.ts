@@ -1,17 +1,11 @@
 import * as React from 'react'
-import { SchemeConfig, SchemeKeyType, SchemeValueType, ValueOfScheme } from '@themes/scheme'
+import { SchemeConfig, SchemeKeyType } from '@themes/scheme'
 
-export type ContextSchemeConfig<
-  SchemeKey extends SchemeKeyType,
-  Scheme extends SchemeValueType
-> = Readonly<
+export type ContextSchemeConfig<SchemeKey extends SchemeKeyType, Scheme> = Readonly<
   SchemeConfig<SchemeKey, Scheme> & {
     Context: React.Context<SchemeKey>
-    transform: <SK extends SchemeKeyType, S extends SchemeValueType>(
-      transformerSchemeConfig: SchemeConfig<
-        SK,
-        (scheme: ValueOfScheme<SchemeConfig<SchemeKey, Scheme>>) => S
-      >,
+    transform: <SK extends SchemeKeyType, S>(
+      transformerSchemeConfig: SchemeConfig<SK, (scheme: Scheme) => S>,
     ) => SchemeConfig<SK, () => S>
   }
 >

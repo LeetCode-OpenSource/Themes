@@ -1,19 +1,16 @@
-import { SchemeConfig, SchemeKeyType, SchemeValueType, ValueOfScheme } from '@themes/scheme'
+import { SchemeConfig, SchemeKeyType } from '@themes/scheme'
 
 import { ContextSchemeConfig } from '../types'
 import { useContextSchemeConfig } from '../use-context-scheme-config'
 
 export function transformByContextSchemeConfig<
   ContextSchemeKey extends SchemeKeyType,
-  ContextScheme extends SchemeValueType,
+  ContextScheme,
   SchemeKey extends SchemeKeyType,
-  Scheme extends SchemeValueType
+  Scheme
 >(
   contextSchemeConfig: ContextSchemeConfig<ContextSchemeKey, ContextScheme>,
-  transformerSchemeConfig: SchemeConfig<
-    SchemeKey,
-    (context: ValueOfScheme<SchemeConfig<ContextSchemeKey, ContextScheme>>) => Scheme
-  >,
+  transformerSchemeConfig: SchemeConfig<SchemeKey, (context: ContextScheme) => Scheme>,
 ) {
   const schemeKeys = Object.keys(transformerSchemeConfig.schemes) as SchemeKey[]
 
