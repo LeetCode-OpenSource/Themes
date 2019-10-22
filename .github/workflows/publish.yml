@@ -36,7 +36,7 @@ jobs:
     - name: Publish packages
       uses: borales/actions-yarn@v2.0.0
       with:
-        cmd: run publish --registry "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN"
+        cmd: run publish --registry "https://registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" --loglevel silly
       env:
         CI: true
         NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
