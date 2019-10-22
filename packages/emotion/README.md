@@ -1,3 +1,3 @@
 # @themes/emotion
 
-Work in process.
+Work in progress.

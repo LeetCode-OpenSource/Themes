@@ -1,3 +1,3 @@
 # @themes/react
 
-Work in process.
+Work in progress.
