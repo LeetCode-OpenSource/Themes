@@ -14,7 +14,7 @@
     "bootstrap": "lerna bootstrap",
     "build": "lerna run build",
     "prepublishOnly": "yarn run build",
-    "config:NPM_AUTH_TOKEN": "npm config set //registry.npmjs.org/:_authToken $NPM_AUTH_TOKEN",
+    "config:NPM_AUTH_TOKEN": "npm config set '//registry.npmjs.org/:_authToken' $NPM_AUTH_TOKEN",
     "publish": "lerna publish from-package --yes",
     "test": "jest",
     "lint": "yarn lint:eslint && yarn lint:tsc",
