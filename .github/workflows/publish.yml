@@ -34,7 +34,7 @@ jobs:
         cmd: run lint
     
     - name: Setup npm auth token
-      run: npm config set //registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN
+      run: echo "npm config set //registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
       env:
         CI: true
         NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
