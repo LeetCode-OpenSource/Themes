@@ -18,18 +18,28 @@ jobs:
       with:
         node-version: '12.x'
     
-    - name: Setup yarn
+    - name: Install dependencies 
       uses: borales/actions-yarn@v2.0.0
       with:
         cmd: install
+        
+    - name: Build packages
+      uses: borales/actions-yarn@v2.0.0
+      with:
+        cmd: run build
+        
+    - name: Lint packages
+      uses: borales/actions-yarn@v2.0.0
+      with:
+        cmd: run lint
     
-    - name: Setup node auth token
-      run: npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
+    - name: Setup npm auth token
+      run: npm config set //registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN
       env:
         CI: true
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+        NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
     
-    - name: Publish
+    - name: Publish packages
       uses: borales/actions-yarn@v2.0.0
       with:
         cmd: run publish
