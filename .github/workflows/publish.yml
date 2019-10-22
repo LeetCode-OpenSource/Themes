@@ -33,13 +33,10 @@ jobs:
       with:
         cmd: run lint
     
-    - name: Setup npm auth token
-      run: echo "npm config set //registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
-      env:
-        CI: true
-        NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-    
     - name: Publish packages
       uses: borales/actions-yarn@v2.0.0
       with:
-        cmd: run publish
+        cmd: run publish --registry "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN"
+      env:
+        CI: true
+        NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
