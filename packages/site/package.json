@@ -1,18 +1,22 @@
 {
   "name": "themes-site",
-  "private": true,
   "version": "0.0.13",
   "description": "",
+  "license": "MIT",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeetCode-OpenSource/themes.git"
+  },
+  "keywords": [],
   "main": "dist/index.js",
   "scripts": {
+    "build": "yarn run clean && parcel build ./index.html --out-dir ./dist --public-url ./",
     "clean": "rm -rf ./dist",
     "dev": "parcel ./index.html",
-    "build": "yarn run clean && parcel build ./index.html --out-dir ./dist --public-url ./",
     "lint:tsc": "tsc -p tsconfig.json --noEmit",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "license": "MIT",
   "dependencies": {
     "@emotion/core": "^10.0.21",
     "@emotion/styled": "^10.0.17",

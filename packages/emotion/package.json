@@ -2,23 +2,19 @@
   "name": "@themes/emotion",
   "version": "0.0.13",
   "description": "",
+  "license": "MIT",
+  "repository": "https://github.com/LeetCode-OpenSource/themes/tree/master/packages/emotion",
+  "keywords": [],
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
-  "scripts": {
-    "clean": "rm -rf ./dist",
-    "build": "yarn run clean && tsc -p tsconfig.build.json",
-    "lint:tsc": "tsc -p tsconfig.json --noEmit",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "publishConfig": {
     "access": "public"
   },
-  "devDependencies": {
-    "@emotion/core": "^10.0.21",
-    "@emotion/styled": "^10.0.17",
-    "@themes/react": "^0.0.13",
-    "@themes/scheme": "^0.0.8",
-    "emotion-theming": "^10.0.19"
+  "scripts": {
+    "build": "yarn run clean && tsc -p tsconfig.build.json",
+    "clean": "rm -rf ./dist",
+    "lint:tsc": "tsc -p tsconfig.json --noEmit",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "peerDependencies": {
     "@emotion/core": "^10.0.21",
@@ -28,6 +24,11 @@
     "emotion-theming": "^10.0.19",
     "react": "^16.10.2"
   },
-  "keywords": [],
-  "license": "MIT"
+  "devDependencies": {
+    "@emotion/core": "^10.0.21",
+    "@emotion/styled": "^10.0.17",
+    "@themes/react": "^0.0.13",
+    "@themes/scheme": "^0.0.8",
+    "emotion-theming": "^10.0.19"
+  }
 }

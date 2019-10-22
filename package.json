@@ -1,24 +1,40 @@
 {
   "name": "themes-monorepo",
+  "license": "MIT",
   "private": true,
-  "workspaces": [
-    "packages/*",
-    "site"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/LeetCode-OpenSource/themes.git"
   },
-  "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "build": "lerna run build",
-    "publish": "lerna publish from-package",
-    "test": "jest",
+    "format:package": "yarn format-package '**/package.json' -w -c format-package.json",
     "lint": "yarn lint:eslint && yarn lint:tsc",
     "lint:eslint": "eslint . --ext .ts,.tsx --fix --max-warnings 0",
     "lint:tsc": "lerna run lint:tsc --parallel",
-    "prettier": "prettier 'packages/**/*.@(ts|tsx|html|json)' --write"
+    "prettier": "prettier 'packages/**/*.@(ts|tsx|html|json)' --write",
+    "publish": "lerna publish from-package",
+    "test": "jest"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/package.json": [
+      "yarn run format:package",
+      "git add"
+    ],
+    "*.{ts,tsx}": [
+      "prettier --write",
+      "yarn run lint:eslint",
+      "git add"
+    ]
   },
   "devDependencies": {
     "@types/jest": "^24.0.18",
@@ -29,6 +45,7 @@
     "eslint-config-prettier": "^6.3.0",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "^7.16.0",
+    "format-package": "^5.2.0",
     "husky": ">=1",
     "jest": "^24.9.0",
     "lerna": "^3.16.4",
@@ -38,17 +55,5 @@
     "ts-jest": "^24.1.0",
     "tslib": "^1.10.0",
     "typescript": "^3.6.3"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{ts,tsx}": [
-      "prettier --write",
-      "yarn run lint:eslint",
-      "git add"
-    ]
   }
 }

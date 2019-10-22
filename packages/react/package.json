@@ -2,24 +2,25 @@
   "name": "@themes/react",
   "version": "0.0.13",
   "description": "",
+  "license": "MIT",
+  "repository": "https://github.com/LeetCode-OpenSource/themes/tree/master/packages/react",
+  "keywords": [],
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
-  "scripts": {
-    "clean": "rm -rf ./dist",
-    "build": "yarn run clean && tsc -p tsconfig.build.json",
-    "lint:tsc": "tsc -p tsconfig.json --noEmit",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "publishConfig": {
     "access": "public"
   },
-  "keywords": [],
-  "license": "MIT",
-  "devDependencies": {
-    "@themes/scheme": "^0.0.8"
+  "scripts": {
+    "build": "yarn run clean && tsc -p tsconfig.build.json",
+    "clean": "rm -rf ./dist",
+    "lint:tsc": "tsc -p tsconfig.json --noEmit",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "peerDependencies": {
     "@themes/scheme": "^0.0.7",
     "react": "^16.10.2"
+  },
+  "devDependencies": {
+    "@themes/scheme": "^0.0.8"
   }
 }
