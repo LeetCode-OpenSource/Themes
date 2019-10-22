@@ -8,6 +8,7 @@
     "clean": "rm -rf ./dist",
     "dev": "parcel ./index.html",
     "build": "yarn run clean && parcel build ./index.html --out-dir ./dist --public-url ./",
+    "lint:tsc": "tsc -p tsconfig.json --noEmit",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
