@@ -1,7 +1,7 @@
 {
   "name": "themes-site",
   "private": true,
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -16,9 +16,9 @@
   "dependencies": {
     "@emotion/core": "^10.0.21",
     "@emotion/styled": "^10.0.17",
-    "@themes/emotion": "^0.0.10",
-    "@themes/react": "^0.0.11",
-    "@themes/scheme": "^0.0.7",
+    "@themes/emotion": "^0.0.11",
+    "@themes/react": "^0.0.12",
+    "@themes/scheme": "^0.0.8",
     "emotion-theming": "^10.0.19",
     "react": "^16.10.2",
     "react-dom": "^16.10.2"

@@ -1,6 +1,6 @@
 {
   "name": "@themes/react",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -16,7 +16,7 @@
   "keywords": [],
   "license": "MIT",
   "devDependencies": {
-    "@themes/scheme": "^0.0.7"
+    "@themes/scheme": "^0.0.8"
   },
   "peerDependencies": {
     "@themes/scheme": "^0.0.7",
