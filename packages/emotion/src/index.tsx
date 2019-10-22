@@ -7,6 +7,10 @@ import { useContextSchemeConfig } from '@themes/react'
 
 import { SetupEmotionConfig, SetupEmotionResult, StyleFactory } from './types'
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+// @ts-ignore
+type Test = string
+
 export function setupEmotion<ColorsSchemeKey extends SchemeKeyType, ColorsScheme>(
   config: SetupEmotionConfig<ColorsSchemeKey, ColorsScheme>,
 ): SetupEmotionResult<ColorsSchemeKey, ColorsScheme> {
