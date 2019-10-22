@@ -26,5 +26,5 @@ export function transformByContextSchemeConfig<
       }),
       {},
     ),
-  } as SchemeConfig<SchemeKey, () => Scheme>
+  } as SchemeConfig<SchemeKey, Scheme>
 }

@@ -1,10 +1,10 @@
 import * as React from 'react'
-import { getScheme, SchemeConfig, SchemeKeyType } from '@themes/scheme'
+import { getScheme, SchemeConfig } from '@themes/scheme'
 
 type CombinedProps<Config, Props> = Omit<Props, keyof Config> &
   {
-    [Key in keyof Config]: Config[Key] extends SchemeConfig<infer SchemeKey, any>
-      ? SchemeKey
+    [Key in keyof Config]: Config[Key] extends SchemeConfig<infer SchemeKey, infer Scheme>
+      ? Scheme | SchemeKey
       : never
   }
 
@@ -30,14 +30,20 @@ export function combine<
       return config[key]
     }
 
-    function getSchemeKey(key: ConfigKey): SchemeKeyType {
+    function getSchemeKey(key: ConfigKey) {
       return props[key]
     }
 
     const finalProps = {} as Props
 
     configKeys.forEach((key) => {
-      finalProps[key] = getScheme(getSchemeConfig(key), getSchemeKey(key))
+      const schemeKey = getSchemeKey(key)
+
+      if (typeof schemeKey === 'object') {
+        finalProps[key] = schemeKey as any
+      } else {
+        finalProps[key] = getScheme(getSchemeConfig(key), schemeKey)
+      }
     })
 
     return <Component {...props} {...finalProps} />

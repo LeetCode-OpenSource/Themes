@@ -6,6 +6,6 @@ export type ContextSchemeConfig<SchemeKey extends SchemeKeyType, Scheme> = Reado
     Context: React.Context<SchemeKey>
     transform: <SK extends SchemeKeyType, S>(
       transformerSchemeConfig: SchemeConfig<SK, (scheme: Scheme) => S>,
-    ) => SchemeConfig<SK, () => S>
+    ) => SchemeConfig<SK, S>
   }
 >
