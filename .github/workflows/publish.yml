@@ -42,4 +42,4 @@ jobs:
     - name: Publish packages
       uses: borales/actions-yarn@v2.0.0
       with:
-        cmd: run publish --loglevel silly
+        cmd: run publish --no-verify-access --loglevel silly
