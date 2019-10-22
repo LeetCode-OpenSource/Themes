@@ -7,6 +7,8 @@ import { useContextSchemeConfig } from '@themes/react'
 
 import { SetupEmotionConfig, SetupEmotionResult, StyleFactory } from './types'
 
+export const test = 1
+
 export function setupEmotion<ColorsSchemeKey extends SchemeKeyType, ColorsScheme>(
   config: SetupEmotionConfig<ColorsSchemeKey, ColorsScheme>,
 ): SetupEmotionResult<ColorsSchemeKey, ColorsScheme> {
