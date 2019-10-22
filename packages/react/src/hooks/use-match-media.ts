@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react'
 
 export function useMatchMedia(query: string): boolean {
+  if (typeof window === 'undefined') {
+    return false
+  }
+
   const [matches, updateMatches] = useState(matchMedia(query).matches)
 
   useEffect(() => {
