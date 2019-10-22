@@ -12,7 +12,8 @@
   "license": "MIT",
   "scripts": {
     "bootstrap": "lerna bootstrap",
-    "prepublishOnly": "lerna run build",
+    "build": "lerna run build",
+    "prepublishOnly": "yarn run build",
     "publish": "lerna publish from-package",
     "test": "jest",
     "lint": "yarn lint:eslint && yarn lint:tsc",
