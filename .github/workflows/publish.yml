@@ -37,7 +37,7 @@ jobs:
       uses: borales/actions-yarn@v2.0.0
       with:
         cmd: |
-          npm config set //registry.npmjs.org/:_authToken $NPM_AUTH_TOKEN
+          run config:NPM_AUTH_TOKEN
           run publish --no-verify-access --loglevel silly
       env:
         CI: true
