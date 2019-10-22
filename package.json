@@ -14,11 +14,11 @@
     "bootstrap": "lerna bootstrap",
     "build": "lerna run build",
     "prepublishOnly": "yarn run build",
-    "publish": "lerna publish from-package",
+    "publish": "lerna publish from-package --yes",
     "test": "jest",
     "lint": "yarn lint:eslint && yarn lint:tsc",
     "lint:eslint": "eslint . --ext .ts,.tsx --fix --max-warnings 0",
-    "lint:tsc": "lerna run lint:tsc",
+    "lint:tsc": "lerna run lint:tsc --parallel",
     "prettier": "prettier 'packages/**/*.@(ts|tsx|html|json)' --write"
   },
   "devDependencies": {
