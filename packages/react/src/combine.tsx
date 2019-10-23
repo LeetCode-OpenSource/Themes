@@ -2,11 +2,13 @@ import * as React from 'react'
 import { getScheme, SchemeConfig } from '@themes/scheme'
 
 type CombinedProps<Config, Props> = Omit<Props, keyof Config> &
-  {
-    [Key in keyof Config]: Config[Key] extends SchemeConfig<infer SchemeKey, infer Scheme>
-      ? Scheme | SchemeKey
-      : never
-  }
+  Partial<
+    {
+      [Key in keyof Config]: Config[Key] extends SchemeConfig<infer SchemeKey, infer Scheme>
+        ? Scheme | SchemeKey
+        : never
+    }
+  >
 
 type CombineResult<Config, Props> = React.FunctionComponent<CombinedProps<Config, Props>>
 
