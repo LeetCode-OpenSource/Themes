@@ -4,10 +4,7 @@
   "description": "",
   "license": "MIT",
   "private": true,
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/LeetCode-OpenSource/themes.git"
-  },
+  "repository": "https://github.com/LeetCode-OpenSource/themes/tree/master/packages/site",
   "keywords": [],
   "main": "dist/index.js",
   "scripts": {

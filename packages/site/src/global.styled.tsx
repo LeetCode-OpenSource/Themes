@@ -1,10 +1,8 @@
 import { globalStyle } from '~/src/colors'
 
 export const GlobalStyle = globalStyle(({ colors }) => ({
-  ':root': {
-    colorScheme: 'light dark',
-  },
   body: {
+    color: colors.primary,
     background: colors.background,
   },
 }))
