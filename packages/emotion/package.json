@@ -25,10 +25,10 @@
     "react": "^16.10.2"
   },
   "devDependencies": {
-    "@emotion/core": "^10.0.21",
-    "@emotion/styled": "^10.0.17",
+    "@emotion/core": "10.0.21",
+    "@emotion/styled": "10.0.17",
     "@themes/react": "^0.0.15",
     "@themes/scheme": "^0.0.9",
-    "emotion-theming": "^10.0.19"
+    "emotion-theming": "10.0.19"
   }
 }
