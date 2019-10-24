@@ -23,7 +23,7 @@ export function combine<
   type ConfigKey = Extract<keyof Config, keyof Props>
   const configKeys = Object.keys(config) as Array<ConfigKey>
 
-  return function CombinedComponent(props: CombinedProps<Config, Props>) {
+  return React.forwardRef<CombinedProps<Config, Props>, any>((props, ref) => {
     function getSchemeConfig(key: ConfigKey): SchemeConfig<any, any> {
       return config[key]
     }
@@ -44,6 +44,6 @@ export function combine<
       }
     })
 
-    return <Component {...props} {...finalProps} />
-  }
+    return <Component {...props} {...finalProps} ref={ref} />
+  })
 }
