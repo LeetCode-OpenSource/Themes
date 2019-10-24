@@ -1,6 +1,6 @@
 {
   "name": "@themes/emotion",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "",
   "license": "MIT",
   "repository": "https://github.com/LeetCode-OpenSource/themes/tree/master/packages/emotion",
@@ -27,8 +27,8 @@
   "devDependencies": {
     "@emotion/core": "^10.0.21",
     "@emotion/styled": "^10.0.17",
-    "@themes/react": "^0.0.15",
-    "@themes/scheme": "^0.0.9",
+    "@themes/react": "^0.0.16",
+    "@themes/scheme": "^0.0.10",
     "emotion-theming": "^10.0.19"
   }
 }
