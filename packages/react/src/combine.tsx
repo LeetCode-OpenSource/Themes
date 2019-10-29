@@ -1,31 +1,34 @@
 import * as React from 'react'
 import { getScheme, SchemeConfig } from '@themes/scheme'
 
-type CombinedProps<Config, Props> = Omit<Props, keyof Config> &
+type CombinedComponentProps<Props, Config extends CombineConfig<Props>> = Omit<
+  Props,
+  keyof Config
+> &
   Partial<
     {
-      [Key in keyof Config]: Config[Key] extends SchemeConfig<infer SchemeKey, infer Scheme>
-        ? Scheme | SchemeKey
+      [Key in keyof Config]: Key extends keyof Props
+        ? Config[Key] extends SchemeConfig<infer SchemeKey, any>
+          ? SchemeKey | Props[Key]
+          : never
         : never
     }
   >
 
-type CombineResult<Config, Props> = React.FunctionComponent<CombinedProps<Config, Props>>
+type CombineConfig<Props> = {
+  [Key in keyof Props]?: SchemeConfig<any, Props[Key]>
+}
 
-type ConfigType = { [propName: string]: SchemeConfig<any, any> }
-
-export function combine<
-  Config extends ConfigType,
-  Props extends {
-    [Key in keyof Config]: Config[Key] extends SchemeConfig<infer SK, infer S> ? SK | S : never
-  }
->(config: Config, Component: React.ComponentType<Props>): CombineResult<Config, Props> {
+export function combine<Props, Config extends CombineConfig<Props> = CombineConfig<Props>>(
+  config: Config,
+  Component: React.ComponentType<Props>,
+): React.FunctionComponent<CombinedComponentProps<Props, Config>> {
   type ConfigKey = Extract<keyof Config, keyof Props>
   const configKeys = Object.keys(config) as Array<ConfigKey>
 
-  return React.forwardRef<CombinedProps<Config, Props>, any>((props, ref) => {
-    function getSchemeConfig(key: ConfigKey): SchemeConfig<any, any> {
-      return config[key]
+  return React.forwardRef<CombinedComponentProps<Config, Props>, any>((props, ref) => {
+    function getSchemeConfig(key: ConfigKey) {
+      return config[key] as SchemeConfig<any, any>
     }
 
     function getSchemeKey(key: ConfigKey) {
@@ -36,11 +39,12 @@ export function combine<
 
     configKeys.forEach((key) => {
       const schemeKey = getSchemeKey(key)
+      const scheme = getScheme(getSchemeConfig(key), schemeKey)
 
-      if (typeof schemeKey === 'object') {
+      if (scheme === undefined) {
         finalProps[key] = schemeKey as any
       } else {
-        finalProps[key] = getScheme(getSchemeConfig(key), schemeKey)
+        finalProps[key] = scheme
       }
     })
 
