@@ -17,13 +17,11 @@ export function getScheme<SchemeKey extends SchemeKeyType, Scheme>(
   }
 
   if (schemeKey.identify === OverwriteSymbol) {
-    const currentScheme = getBasicScheme(
-      schemeConfig,
-      schemeKey.schemeKey || schemeConfig.defaultScheme,
-    )
+    const currentSchemeKey = schemeKey.schemeKey || schemeConfig.defaultScheme
+    const currentScheme = getBasicScheme(schemeConfig, currentSchemeKey)
 
     if (typeof schemeKey.overwriteScheme === 'function') {
-      return { ...currentScheme, ...schemeKey.overwriteScheme(currentScheme) }
+      return { ...currentScheme, ...schemeKey.overwriteScheme(currentScheme, currentSchemeKey) }
     } else {
       return { ...currentScheme, ...schemeKey.overwriteScheme }
     }

@@ -2,7 +2,7 @@ import { OverwriteSymbol, OverwriteScheme, OverwriteConfig, SchemeKeyType } from
 
 export function overwrite<SchemeKey extends SchemeKeyType, Scheme>(
   schemeKey?: SchemeKey,
-  overwriteScheme: OverwriteScheme<Scheme> = {},
+  overwriteScheme: OverwriteScheme<SchemeKey, Scheme> = {},
 ): OverwriteConfig<SchemeKey, Scheme> {
   return {
     identify: OverwriteSymbol,

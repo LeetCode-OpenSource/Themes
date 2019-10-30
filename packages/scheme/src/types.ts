@@ -7,10 +7,12 @@ export type SchemeConfig<Key extends SchemeKeyType, Scheme> = Readonly<{
 
 export const OverwriteSymbol = Symbol('overwrite scheme')
 
-export type OverwriteScheme<Scheme> = Partial<Scheme> | ((currentScheme: Scheme) => Partial<Scheme>)
+export type OverwriteScheme<SchemeKey extends SchemeKeyType, Scheme> =
+  | Partial<Scheme>
+  | ((currentScheme: Scheme, currentSchemeKey: SchemeKey) => Partial<Scheme>)
 
 export interface OverwriteConfig<SchemeKey extends SchemeKeyType, Scheme> {
   identify: typeof OverwriteSymbol
   schemeKey?: SchemeKey
-  overwriteScheme: OverwriteScheme<Scheme>
+  overwriteScheme: OverwriteScheme<SchemeKey, Scheme>
 }
