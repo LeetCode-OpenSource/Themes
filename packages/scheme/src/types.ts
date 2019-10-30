@@ -11,6 +11,6 @@ export type OverwriteScheme<Scheme> = Partial<Scheme> | ((currentScheme: Scheme)
 
 export interface OverwriteConfig<SchemeKey extends SchemeKeyType, Scheme> {
   identify: typeof OverwriteSymbol
-  schemeKey: SchemeKey
+  schemeKey?: SchemeKey
   overwriteScheme: OverwriteScheme<Scheme>
 }
