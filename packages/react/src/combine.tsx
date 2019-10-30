@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { getScheme, SchemeConfig, OverwriteConfig } from '@themes/scheme'
+import { getScheme, SchemeConfig, ValidSchemeKey } from '@themes/scheme'
 
 type CombinedComponentProps<Props, Config extends CombineConfig<Props>> = Omit<
   Props,
@@ -9,7 +9,7 @@ type CombinedComponentProps<Props, Config extends CombineConfig<Props>> = Omit<
     {
       [Key in keyof Config]: Key extends keyof Props
         ? Config[Key] extends SchemeConfig<infer SchemeKey, infer Scheme>
-          ? SchemeKey | OverwriteConfig<SchemeKey, Scheme> | Props[Key]
+          ? ValidSchemeKey<SchemeKey, Scheme> | Props[Key]
           : never
         : never
     }

@@ -8,9 +8,13 @@ function getBasicScheme<SchemeKey extends SchemeKeyType, Scheme>(
   return typeof scheme === 'function' ? scheme() : scheme
 }
 
+export type ValidSchemeKey<SchemeKey extends SchemeKeyType, Scheme> =
+  | SchemeKey
+  | OverwriteConfig<SchemeKey, Scheme>
+
 export function getScheme<SchemeKey extends SchemeKeyType, Scheme>(
   schemeConfig: SchemeConfig<SchemeKey, Scheme>,
-  schemeKey: SchemeKey | OverwriteConfig<SchemeKey, Scheme> = schemeConfig.defaultScheme,
+  schemeKey: ValidSchemeKey<SchemeKey, Scheme> = schemeConfig.defaultScheme,
 ): Scheme {
   if (typeof schemeKey === 'string') {
     return getBasicScheme(schemeConfig, schemeKey)
