@@ -20,7 +20,7 @@ export function getScheme<SchemeKey extends SchemeKeyType, Scheme>(
     const currentScheme = getBasicScheme(schemeConfig, schemeKey.schemeKey)
 
     if (typeof schemeKey.overwriteScheme === 'function') {
-      return schemeKey.overwriteScheme(currentScheme)
+      return { ...currentScheme, ...schemeKey.overwriteScheme(currentScheme) }
     } else {
       return { ...currentScheme, ...schemeKey.overwriteScheme }
     }
