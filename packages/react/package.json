@@ -1,6 +1,6 @@
 {
   "name": "@themes/react",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "",
   "license": "MIT",
   "repository": "https://github.com/LeetCode-OpenSource/themes/tree/master/packages/react",
@@ -21,6 +21,6 @@
     "react": "^16.10.2"
   },
   "devDependencies": {
-    "@themes/scheme": "^0.0.11"
+    "@themes/scheme": "^0.0.12"
   }
 }
