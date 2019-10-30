@@ -1,6 +1,6 @@
 {
   "name": "themes-site",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "",
   "license": "MIT",
   "private": true,
@@ -17,9 +17,9 @@
   "dependencies": {
     "@emotion/core": "^10.0.21",
     "@emotion/styled": "^10.0.17",
-    "@themes/emotion": "^0.0.17",
-    "@themes/react": "^0.0.17",
-    "@themes/scheme": "^0.0.10",
+    "@themes/emotion": "^0.0.18",
+    "@themes/react": "^0.0.18",
+    "@themes/scheme": "^0.0.11",
     "emotion-theming": "^10.0.19",
     "react": "^16.10.2",
     "react-dom": "^16.10.2"
