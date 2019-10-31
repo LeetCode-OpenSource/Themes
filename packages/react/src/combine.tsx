@@ -9,7 +9,7 @@ type CombinedComponentProps<Props, Config extends CombineConfig<Props>> = Omit<
     {
       [Key in keyof Config]: Key extends keyof Props
         ? Config[Key] extends SchemeConfig<infer SchemeKey, infer Scheme>
-          ? ValidSchemeKey<SchemeKey, Scheme> | Props[Key]
+          ? ValidSchemeKey<SchemeKey, Scheme>
           : never
         : never
     }
@@ -38,14 +38,7 @@ export function combine<Props, Config extends CombineConfig<Props> = CombineConf
     const finalProps = {} as Props
 
     configKeys.forEach((key) => {
-      const schemeKey = getSchemeKey(key)
-      const scheme = getScheme(getSchemeConfig(key), schemeKey)
-
-      if (scheme === undefined) {
-        finalProps[key] = schemeKey as any
-      } else {
-        finalProps[key] = scheme
-      }
+      finalProps[key] = getScheme(getSchemeConfig(key), getSchemeKey(key))
     })
 
     return <Component {...props} {...finalProps} ref={ref} />
