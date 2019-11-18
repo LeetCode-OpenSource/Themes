@@ -19,8 +19,8 @@ export function setupEmotion<ColorsSchemeKey extends SchemeKeyType, ColorsScheme
 
     return (
       <Consumer>
-        {() => {
-          const colors = useColors()
+        {(colorSchemeKey) => {
+          const colors = getScheme(config.colors, colorSchemeKey)
           return children(colors)
         }}
       </Consumer>
