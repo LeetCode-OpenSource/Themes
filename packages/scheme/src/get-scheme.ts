@@ -10,7 +10,6 @@ function getBasicScheme<SchemeKey extends SchemeKeyType, Scheme>(
 
 export type ValidSchemeKey<SchemeKey extends SchemeKeyType, Scheme> =
   | SchemeKey
-  | Scheme
   | OverwriteConfig<SchemeKey, Scheme>
 
 function isOverwriteConfig<SchemeKey extends SchemeKeyType, Scheme>(
@@ -27,10 +26,6 @@ export function getScheme<SchemeKey extends SchemeKeyType, Scheme>(
   schemeConfig: SchemeConfig<SchemeKey, Scheme>,
   schemeKey: ValidSchemeKey<SchemeKey, Scheme> = schemeConfig.defaultScheme,
 ): Scheme {
-  if (typeof schemeKey === 'string') {
-    return getBasicScheme(schemeConfig, schemeKey as SchemeKey)
-  }
-
   if (isOverwriteConfig(schemeKey)) {
     const currentSchemeKey = schemeKey.schemeKey || schemeConfig.defaultScheme
     const currentScheme = getBasicScheme(schemeConfig, currentSchemeKey)
@@ -40,7 +35,7 @@ export function getScheme<SchemeKey extends SchemeKeyType, Scheme>(
     } else {
       return { ...currentScheme, ...schemeKey.overwriteScheme }
     }
+  } else {
+    return getBasicScheme(schemeConfig, schemeKey as SchemeKey)
   }
-
-  return schemeKey
 }
