@@ -1,34 +1,14 @@
-import { SchemeConfig, SchemeKeyType, OverrideConfig, OverrideSymbol } from './types'
+import { SchemeConfig, SchemeKeyType, ValidSchemeKey } from './types'
+import { isOverrideConfig, getSchemeKey, getBasicScheme } from './utils'
 
-function getBasicScheme<SchemeKey extends SchemeKeyType, Scheme>(
-  schemeConfig: SchemeConfig<SchemeKey, Scheme>,
-  schemeKey: SchemeKey,
-): Scheme {
-  const scheme = schemeConfig.schemes[schemeKey]
-  return typeof scheme === 'function' ? scheme() : scheme
-}
-
-export type ValidSchemeKey<SchemeKey extends SchemeKeyType, Scheme> =
-  | SchemeKey
-  | OverrideConfig<SchemeKey, Scheme>
-
-function isOverrideConfig<SchemeKey extends SchemeKeyType, Scheme>(
-  schemeKey: ValidSchemeKey<SchemeKey, Scheme>,
-): schemeKey is OverrideConfig<SchemeKey, Scheme> {
-  return (
-    schemeKey &&
-    typeof schemeKey === 'object' &&
-    (schemeKey as OverrideConfig<SchemeKey, Scheme>).identify === OverrideSymbol
-  )
-}
+export { getSchemeKey }
 
 export function getScheme<SchemeKey extends SchemeKeyType, Scheme>(
   schemeConfig: SchemeConfig<SchemeKey, Scheme>,
   schemeKey: ValidSchemeKey<SchemeKey, Scheme> = schemeConfig.defaultScheme,
 ): Scheme {
   if (isOverrideConfig<SchemeKey, Scheme>(schemeKey)) {
-    const overrideConfigSchemeKey = schemeKey.schemeKey as SchemeKey
-    const currentSchemeKey: SchemeKey = overrideConfigSchemeKey || schemeConfig.defaultScheme
+    const currentSchemeKey = getSchemeKey(schemeConfig, schemeKey)
     const currentScheme = getBasicScheme(schemeConfig, currentSchemeKey)
 
     if (typeof schemeKey.overrideScheme === 'function') {
