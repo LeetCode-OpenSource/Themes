@@ -5,22 +5,22 @@ export type SchemeConfig<Key extends SchemeKeyType, Scheme> = Readonly<{
   schemes: Readonly<Record<Key, Scheme | (() => Scheme)>>
 }>
 
-export const OverwriteSymbol = Symbol('overwrite scheme')
+export const OverrideSymbol = Symbol('override scheme')
 
-export type OverwriteScheme<SchemeKey extends SchemeKeyType, Scheme> =
+export type OverrideScheme<SchemeKey extends SchemeKeyType, Scheme> =
   | Partial<Scheme>
   | ((currentScheme: Scheme, currentSchemeKey: SchemeKey) => Partial<Scheme>)
 
-type DefaultOverwriteConfig<SchemeKey extends SchemeKeyType, Scheme> = {
-  identify: typeof OverwriteSymbol
+type DefaultOverrideConfig<SchemeKey extends SchemeKeyType, Scheme> = {
+  identify: typeof OverrideSymbol
   schemeKey?: SchemeKey
-  overwriteScheme: OverwriteScheme<SchemeKey, Scheme>
+  overrideScheme: OverrideScheme<SchemeKey, Scheme>
 }
 
-export type OverwriteConfig<SchemeKey extends SchemeKeyType, Scheme> = SchemeKey extends infer SK
+export type OverrideConfig<SchemeKey extends SchemeKeyType, Scheme> = SchemeKey extends infer SK
   ? SK extends string
     ? Scheme extends infer S
-      ? DefaultOverwriteConfig<SK, S>
-      : DefaultOverwriteConfig<SK, Scheme>
-    : DefaultOverwriteConfig<SchemeKey, Scheme>
-  : DefaultOverwriteConfig<SchemeKey, Scheme>
+      ? DefaultOverrideConfig<SK, S>
+      : DefaultOverrideConfig<SK, Scheme>
+    : DefaultOverrideConfig<SchemeKey, Scheme>
+  : DefaultOverrideConfig<SchemeKey, Scheme>

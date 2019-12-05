@@ -1,4 +1,4 @@
-import { SchemeConfig, SchemeKeyType, OverwriteConfig, OverwriteSymbol } from './types'
+import { SchemeConfig, SchemeKeyType, OverrideConfig, OverrideSymbol } from './types'
 
 function getBasicScheme<SchemeKey extends SchemeKeyType, Scheme>(
   schemeConfig: SchemeConfig<SchemeKey, Scheme>,
@@ -10,15 +10,15 @@ function getBasicScheme<SchemeKey extends SchemeKeyType, Scheme>(
 
 export type ValidSchemeKey<SchemeKey extends SchemeKeyType, Scheme> =
   | SchemeKey
-  | OverwriteConfig<SchemeKey, Scheme>
+  | OverrideConfig<SchemeKey, Scheme>
 
-function isOverwriteConfig<SchemeKey extends SchemeKeyType, Scheme>(
+function isOverrideConfig<SchemeKey extends SchemeKeyType, Scheme>(
   schemeKey: ValidSchemeKey<SchemeKey, Scheme>,
-): schemeKey is OverwriteConfig<SchemeKey, Scheme> {
+): schemeKey is OverrideConfig<SchemeKey, Scheme> {
   return (
     schemeKey &&
     typeof schemeKey === 'object' &&
-    (schemeKey as OverwriteConfig<SchemeKey, Scheme>).identify === OverwriteSymbol
+    (schemeKey as OverrideConfig<SchemeKey, Scheme>).identify === OverrideSymbol
   )
 }
 
@@ -26,15 +26,15 @@ export function getScheme<SchemeKey extends SchemeKeyType, Scheme>(
   schemeConfig: SchemeConfig<SchemeKey, Scheme>,
   schemeKey: ValidSchemeKey<SchemeKey, Scheme> = schemeConfig.defaultScheme,
 ): Scheme {
-  if (isOverwriteConfig<SchemeKey, Scheme>(schemeKey)) {
-    const overwriteConfigSchemeKey = schemeKey.schemeKey as SchemeKey
-    const currentSchemeKey: SchemeKey = overwriteConfigSchemeKey || schemeConfig.defaultScheme
+  if (isOverrideConfig<SchemeKey, Scheme>(schemeKey)) {
+    const overrideConfigSchemeKey = schemeKey.schemeKey as SchemeKey
+    const currentSchemeKey: SchemeKey = overrideConfigSchemeKey || schemeConfig.defaultScheme
     const currentScheme = getBasicScheme(schemeConfig, currentSchemeKey)
 
-    if (typeof schemeKey.overwriteScheme === 'function') {
-      return { ...currentScheme, ...schemeKey.overwriteScheme(currentScheme, currentSchemeKey) }
+    if (typeof schemeKey.overrideScheme === 'function') {
+      return { ...currentScheme, ...schemeKey.overrideScheme(currentScheme, currentSchemeKey) }
     } else {
-      return { ...currentScheme, ...schemeKey.overwriteScheme }
+      return { ...currentScheme, ...schemeKey.overrideScheme }
     }
   } else {
     return getBasicScheme(schemeConfig, schemeKey as SchemeKey)
