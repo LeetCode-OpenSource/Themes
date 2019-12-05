@@ -26,8 +26,9 @@ export function getScheme<SchemeKey extends SchemeKeyType, Scheme>(
   schemeConfig: SchemeConfig<SchemeKey, Scheme>,
   schemeKey: ValidSchemeKey<SchemeKey, Scheme> = schemeConfig.defaultScheme,
 ): Scheme {
-  if (isOverwriteConfig(schemeKey)) {
-    const currentSchemeKey = schemeKey.schemeKey || schemeConfig.defaultScheme
+  if (isOverwriteConfig<SchemeKey, Scheme>(schemeKey)) {
+    const overwriteConfigSchemeKey = schemeKey.schemeKey as SchemeKey
+    const currentSchemeKey: SchemeKey = overwriteConfigSchemeKey || schemeConfig.defaultScheme
     const currentScheme = getBasicScheme(schemeConfig, currentSchemeKey)
 
     if (typeof schemeKey.overwriteScheme === 'function') {
