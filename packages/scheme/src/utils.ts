@@ -16,17 +16,6 @@ export function isOverrideConfig<SchemeKey extends SchemeKeyType, Scheme>(
   )
 }
 
-export function getSchemeKey<SchemeKey extends SchemeKeyType, Scheme>(
-  schemeConfig: SchemeConfig<SchemeKey, Scheme>,
-  validSchemeKey: ValidSchemeKey<SchemeKey, Scheme>,
-): SchemeKey {
-  if (isOverrideConfig(validSchemeKey)) {
-    return validSchemeKey.schemeKey as SchemeKey
-  } else {
-    return validSchemeKey || schemeConfig.defaultScheme
-  }
-}
-
 export function getBasicScheme<SchemeKey extends SchemeKeyType, Scheme>(
   schemeConfig: SchemeConfig<SchemeKey, Scheme>,
   schemeKey: SchemeKey,

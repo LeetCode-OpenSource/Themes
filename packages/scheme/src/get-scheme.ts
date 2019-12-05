@@ -1,7 +1,6 @@
 import { SchemeConfig, SchemeKeyType, ValidSchemeKey } from './types'
-import { isOverrideConfig, getSchemeKey, getBasicScheme } from './utils'
-
-export { getSchemeKey }
+import { isOverrideConfig, getBasicScheme } from './utils'
+import { getSchemeKey } from './get-scheme-key'
 
 export function getScheme<SchemeKey extends SchemeKeyType, Scheme>(
   schemeConfig: SchemeConfig<SchemeKey, Scheme>,
