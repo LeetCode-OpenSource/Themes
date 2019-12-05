@@ -5,21 +5,19 @@ type CombinedComponentProps<Props, Config extends CombineConfig<Props>> = Omit<
   Props,
   keyof Config
 > &
-  Partial<
-    {
-      [Key in keyof Config]: Key extends keyof Props
-        ? Config[Key] extends SchemeConfig<infer SchemeKey, infer Scheme>
-          ? ValidSchemeKey<SchemeKey, Scheme>
-          : never
+  {
+    [Key in keyof Config]?: Key extends keyof Props
+      ? Config[Key] extends SchemeConfig<infer SchemeKey, infer Scheme>
+        ? ValidSchemeKey<SchemeKey, Scheme>
         : never
-    }
-  >
+      : never
+  }
 
 type CombineConfig<Props> = {
   [Key in keyof Props]?: SchemeConfig<any, Props[Key]>
 }
 
-export function combine<Props, Config extends CombineConfig<Props> = CombineConfig<Props>>(
+export function combine<Props, Config extends CombineConfig<any>>(
   config: Config,
   Component: React.ComponentType<Props>,
 ): React.FunctionComponent<CombinedComponentProps<Props, Config>> {
@@ -27,13 +25,8 @@ export function combine<Props, Config extends CombineConfig<Props> = CombineConf
   const configKeys = Object.keys(config) as Array<ConfigKey>
 
   return React.forwardRef<CombinedComponentProps<Config, Props>, any>((props, ref) => {
-    function getSchemeConfig(key: ConfigKey) {
-      return config[key] as SchemeConfig<any, any>
-    }
-
-    function getSchemeKey(key: ConfigKey) {
-      return props[key]
-    }
+    const getSchemeConfig = (key: ConfigKey) => config[key] as SchemeConfig<any, any>
+    const getSchemeKey = (key: ConfigKey) => props[key]
 
     const finalProps = {} as Props
 
