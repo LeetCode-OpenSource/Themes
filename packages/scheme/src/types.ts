@@ -13,7 +13,7 @@ export type OverrideScheme<SchemeKey extends SchemeKeyType, Scheme> =
 
 type DefaultOverrideConfig<SchemeKey extends SchemeKeyType, Scheme> = {
   identify: typeof OverrideSymbol
-  schemeKey?: SchemeKey
+  schemeKey: SchemeKey
   overrideScheme: OverrideScheme<SchemeKey, Scheme>
 }
 
@@ -26,5 +26,6 @@ export type OverrideConfig<SchemeKey extends SchemeKeyType, Scheme> = SchemeKey 
   : DefaultOverrideConfig<SchemeKey, Scheme>
 
 export type ValidSchemeKey<SchemeKey extends SchemeKeyType, Scheme> =
+  | undefined
   | SchemeKey
   | OverrideConfig<SchemeKey, Scheme>

@@ -10,7 +10,7 @@ export function isOverrideConfig<SchemeKey extends SchemeKeyType, Scheme>(
   schemeKey: ValidSchemeKey<SchemeKey, Scheme>,
 ): schemeKey is OverrideConfig<SchemeKey, Scheme> {
   return (
-    schemeKey &&
+    !!schemeKey &&
     typeof schemeKey === 'object' &&
     (schemeKey as OverrideConfig<SchemeKey, Scheme>).identify === OverrideSymbol
   )
