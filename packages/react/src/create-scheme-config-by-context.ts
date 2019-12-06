@@ -1,9 +1,13 @@
 import { useContext, Context } from 'react'
-import { SchemeConfig, SchemeKeyType } from '@themes/scheme'
+import { SchemeConfig, SchemeKeyType, SchemeType } from '@themes/scheme'
 
-export function createSchemeConfigByContext<C, SchemeKey extends SchemeKeyType, Scheme>(
-  context: Context<C>,
-  transformerSchemeConfig: SchemeConfig<SchemeKey, (context: C) => Scheme>,
+export function createSchemeConfigByContext<
+  ContextValue,
+  SchemeKey extends SchemeKeyType,
+  Scheme extends SchemeType
+>(
+  context: Context<ContextValue>,
+  transformerSchemeConfig: SchemeConfig<SchemeKey, (context: ContextValue) => Scheme>,
 ): SchemeConfig<SchemeKey, Scheme> {
   const schemeKeys = Object.keys(transformerSchemeConfig.schemes) as SchemeKey[]
 

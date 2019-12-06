@@ -1,19 +1,25 @@
 import * as React from 'react'
-import { SchemeConfig, SchemeKeyType } from '@themes/scheme'
+import { SchemeConfig, SchemeKeyType, SchemeType } from '@themes/scheme'
 
 import { ContextSchemeConfig } from './types'
 import { transformByContextSchemeConfig } from './utils/transform-by-context-scheme-config'
 
-function transform<SK1 extends SchemeKeyType, SV1, SK2 extends SchemeKeyType, SV2>(
-  this: ContextSchemeConfig<SK1, SV1>,
-  transformerSchemeConfig: SchemeConfig<SK2, (context: SV1) => SV2>,
+function transform<
+  SchemeKey1 extends SchemeKeyType,
+  Scheme1 extends SchemeType,
+  SchemeKey2 extends SchemeKeyType,
+  Scheme2 extends SchemeType
+>(
+  this: ContextSchemeConfig<SchemeKey1, Scheme1>,
+  transformerSchemeConfig: SchemeConfig<SchemeKey2, (context: Scheme1) => Scheme2>,
 ) {
   return transformByContextSchemeConfig(this, transformerSchemeConfig)
 }
 
-export function createContextSchemeConfig<SchemeKey extends SchemeKeyType, Scheme>(
-  schemeConfig: SchemeConfig<SchemeKey, Scheme>,
-): ContextSchemeConfig<SchemeKey, Scheme> {
+export function createContextSchemeConfig<
+  SchemeKey extends SchemeKeyType,
+  Scheme extends SchemeType
+>(schemeConfig: SchemeConfig<SchemeKey, Scheme>): ContextSchemeConfig<SchemeKey, Scheme> {
   return {
     ...schemeConfig,
     transform,

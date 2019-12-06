@@ -14,7 +14,7 @@ type CombinedComponentProps<Props, Config extends CombineConfig<Props>> = Omit<
   }
 
 type CombineConfig<Props> = {
-  [Key in keyof Props]?: SchemeConfig<any, Props[Key]>
+  [Key in keyof Props]?: Props[Key] extends object ? SchemeConfig<any, Props[Key]> : never
 }
 
 export function combine<Props, Config extends CombineConfig<any>>(
