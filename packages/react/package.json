@@ -21,6 +21,8 @@
     "react": "^16.10.2"
   },
   "devDependencies": {
-    "@themes/scheme": "^0.0.17"
+    "@themes/scheme": "^0.0.17",
+    "@types/react-test-renderer": "^16.9.1",
+    "react-test-renderer": "^16.12.0"
   }
 }
