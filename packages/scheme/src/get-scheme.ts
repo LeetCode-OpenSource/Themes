@@ -7,7 +7,7 @@ export function getScheme<SchemeKey extends SchemeKeyType, Scheme extends Scheme
   schemeKey: ValidSchemeKey<SchemeKey, Scheme> = schemeConfig.defaultScheme,
 ): Scheme {
   if (isOverrideConfig<SchemeKey, Scheme>(schemeKey)) {
-    const currentSchemeKey = getSchemeKey(schemeConfig, schemeKey)
+    const currentSchemeKey = getSchemeKey(schemeKey, schemeConfig)
     const currentScheme = getBasicScheme(schemeConfig, currentSchemeKey)
 
     if (typeof schemeKey.overrideScheme === 'function') {
