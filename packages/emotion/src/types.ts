@@ -1,12 +1,15 @@
 import { ComponentType, ReactNode } from 'react'
 import { Interpolation } from '@emotion/serialize'
-import { SchemeKeyType } from '@themes/scheme'
-import { ContextSchemeConfig } from '@themes/react'
 import { CreateStyled } from '@emotion/styled'
+import { SchemeKeyType, SchemeType } from '@themes/scheme'
+import { ContextSchemeConfig } from '@themes/react'
 
 export type StyleFactory<EmotionTheme extends object> = (theme: EmotionTheme) => Interpolation
 
-export interface SetupEmotionConfig<ColorsSchemeKey extends SchemeKeyType, ColorsScheme> {
+export interface SetupEmotionConfig<
+  ColorsSchemeKey extends SchemeKeyType,
+  ColorsScheme extends SchemeType
+> {
   colors: ContextSchemeConfig<ColorsSchemeKey, ColorsScheme>
 }
 

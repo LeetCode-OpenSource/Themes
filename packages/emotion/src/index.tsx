@@ -2,12 +2,15 @@ import * as React from 'react'
 import { ThemeProvider, useTheme } from 'emotion-theming'
 import styled from '@emotion/styled'
 import { css, Global } from '@emotion/core'
-import { getScheme, SchemeKeyType } from '@themes/scheme'
+import { getScheme, SchemeKeyType, SchemeType } from '@themes/scheme'
 import { useContextSchemeConfig } from '@themes/react'
 
 import { SetupEmotionConfig, SetupEmotionResult, StyleFactory } from './types'
 
-export function setupEmotion<ColorsSchemeKey extends SchemeKeyType, ColorsScheme>(
+export function setupEmotion<
+  ColorsSchemeKey extends SchemeKeyType,
+  ColorsScheme extends SchemeType
+>(
   config: SetupEmotionConfig<ColorsSchemeKey, ColorsScheme>,
 ): SetupEmotionResult<ColorsSchemeKey, ColorsScheme> {
   function useColors() {
