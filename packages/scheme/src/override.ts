@@ -1,6 +1,12 @@
-import { OverrideSymbol as identify, OverrideScheme, OverrideConfig, SchemeKeyType } from './types'
+import {
+  OverrideSymbol as identify,
+  OverrideScheme,
+  OverrideConfig,
+  SchemeKeyType,
+  SchemeType,
+} from './types'
 
-export function override<SchemeKey extends SchemeKeyType, Scheme>(
+export function override<SchemeKey extends SchemeKeyType, Scheme extends SchemeType>(
   schemeKey: SchemeKey,
   overrideScheme: OverrideScheme<SchemeKey, Scheme>,
 ) {

@@ -12,15 +12,20 @@ describe('get-scheme-key', () => {
     },
   }
 
-  it('should return default scheme key if `validSchemeKey` is undefined', () => {
+  it('should return default scheme key if `validSchemeKey` is `undefined`', () => {
     expect(getSchemeKey(colorScheme)).toEqual('normal')
   })
 
-  it('should return specific scheme key if `validSchemeKey` is scheme key', () => {
+  it('should return specific scheme key if `validSchemeKey` is `SchemeKey`', () => {
     expect(getSchemeKey(colorScheme, 'primary')).toEqual('primary')
   })
 
-  it('should return specific scheme key if `validSchemeKey` is override config', () => {
+  it('should return specific scheme key if `validSchemeKey` is `OverrideConfig`', () => {
     expect(getSchemeKey(colorScheme, override('primary', {}))).toEqual('primary')
+  })
+
+  it('should return undefined if `validSchemeKey` is `Scheme`', () => {
+    const anotherScheme: ButtonColorScheme = { textColor: '#000', backgroundColor: '#fff' }
+    expect(getSchemeKey(colorScheme, anotherScheme)).toBe(undefined)
   })
 })
