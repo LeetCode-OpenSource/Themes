@@ -11,7 +11,7 @@ export function getScheme<SchemeKey extends SchemeKeyType, Scheme extends Scheme
     const currentScheme = getBasicScheme(schemeConfig, currentSchemeKey)
 
     if (typeof schemeKey.overrideScheme === 'function') {
-      return { ...currentScheme, ...schemeKey.overrideScheme(currentScheme, currentSchemeKey) }
+      return { ...currentScheme, ...schemeKey.overrideScheme(currentScheme) }
     } else {
       return { ...currentScheme, ...schemeKey.overrideScheme }
     }

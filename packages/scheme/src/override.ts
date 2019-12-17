@@ -8,7 +8,7 @@ import {
 
 export function override<SchemeKey extends SchemeKeyType, Scheme extends SchemeType>(
   schemeKey: SchemeKey,
-  overrideScheme: OverrideScheme<SchemeKey, Scheme>,
+  overrideScheme: OverrideScheme<Scheme>,
 ) {
   return {
     identify,

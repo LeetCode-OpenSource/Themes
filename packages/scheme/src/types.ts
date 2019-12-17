@@ -9,14 +9,14 @@ export type SchemeConfig<Key extends SchemeKeyType, Scheme extends SchemeType> =
   schemes: Record<Key, Scheme | (() => Scheme)>
 }>
 
-export type OverrideScheme<SchemeKey extends SchemeKeyType, Scheme extends SchemeType> =
+export type OverrideScheme<Scheme extends SchemeType> =
   | Partial<Scheme>
-  | ((currentScheme: Scheme, currentSchemeKey: SchemeKey) => Partial<Scheme>)
+  | ((currentScheme: Scheme) => Partial<Scheme>)
 
 type DefaultOverrideConfig<SchemeKey extends SchemeKeyType, Scheme extends SchemeType> = {
   identify: typeof OverrideSymbol
   schemeKey: SchemeKey
-  overrideScheme: OverrideScheme<SchemeKey, Scheme>
+  overrideScheme: OverrideScheme<Scheme>
 }
 
 export type OverrideConfig<
