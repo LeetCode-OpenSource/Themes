@@ -6,7 +6,7 @@ import { combine } from '../'
 
 describe('combine', () => {
   type ButtonType = 'normal' | 'primary'
-  type ButtonColorScheme = { textColor: string; backgroundColor: string }
+  type ButtonColorScheme = { textColor: string; backgroundColor?: string }
 
   const colorScheme: SchemeConfig<ButtonType, ButtonColorScheme> = {
     defaultScheme: 'normal',

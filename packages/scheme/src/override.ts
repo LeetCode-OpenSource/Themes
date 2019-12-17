@@ -6,13 +6,14 @@ import {
   SchemeType,
 } from './types'
 
-export function override<SchemeKey extends SchemeKeyType, Scheme extends SchemeType>(
-  schemeKey: SchemeKey,
-  overrideScheme: OverrideScheme<Scheme>,
-) {
+export function override<
+  SchemeKey extends SchemeKeyType,
+  Scheme extends SchemeType,
+  UserScheme extends Partial<Scheme>
+>(schemeKey: SchemeKey, overrideScheme: OverrideScheme<Scheme, UserScheme>) {
   return {
     identify,
     schemeKey,
     overrideScheme,
-  } as OverrideConfig<SchemeKey, Scheme>
+  } as OverrideConfig<SchemeKey, Scheme, UserScheme>
 }
