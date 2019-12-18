@@ -9,7 +9,7 @@ import {
 export function override<
   SchemeKey extends SchemeKeyType,
   Scheme extends SchemeType,
-  UserScheme extends Partial<Scheme>
+  UserScheme extends Partial<Scheme> = Partial<Scheme>
 >(schemeKey: SchemeKey, overrideScheme: OverrideScheme<Scheme, UserScheme>) {
   return {
     identify,
