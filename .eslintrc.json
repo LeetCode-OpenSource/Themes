@@ -39,7 +39,6 @@
     "es6": true
   },
   "parserOptions": {
-    "project": "./tsconfig.eslint.json",
     "extraFileExtensions": [".html"],
     "ecmaFeatures": {
       "jsx": true
