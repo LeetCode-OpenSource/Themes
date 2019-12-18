@@ -9,6 +9,10 @@ export type SchemeConfig<Key extends SchemeKeyType, Scheme extends SchemeType> =
   schemes: Record<Key, Scheme | (() => Scheme)>
 }>
 
+type DefaultOverrideScheme<Scheme extends SchemeType, UserScheme extends Partial<Scheme>> =
+  | UserScheme
+  | ((currentScheme: Scheme) => UserScheme)
+
 export type OverrideScheme<
   Scheme extends SchemeType,
   UserScheme extends Partial<Scheme>
@@ -16,11 +20,11 @@ export type OverrideScheme<
   ? UserScheme extends infer US
     ? US extends Partial<S>
       ? S extends SchemeType
-        ? US | ((currentScheme: S) => US)
-        : never
-      : never
-    : never
-  : never
+        ? DefaultOverrideScheme<S, US>
+        : DefaultOverrideScheme<Scheme, UserScheme>
+      : DefaultOverrideScheme<Scheme, UserScheme>
+    : DefaultOverrideScheme<Scheme, UserScheme>
+  : DefaultOverrideScheme<Scheme, UserScheme>
 
 type DefaultOverrideConfig<
   SchemeKey extends SchemeKeyType,
