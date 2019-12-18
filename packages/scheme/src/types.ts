@@ -15,7 +15,7 @@ type DefaultOverrideScheme<Scheme extends SchemeType, UserScheme extends Partial
 
 export type OverrideScheme<
   Scheme extends SchemeType,
-  UserScheme extends Partial<Scheme>
+  UserScheme extends Partial<Scheme> = Partial<Scheme>
 > = Scheme extends infer S
   ? UserScheme extends infer US
     ? US extends Partial<S>
