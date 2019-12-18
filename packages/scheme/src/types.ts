@@ -22,15 +22,33 @@ export type OverrideScheme<
     : never
   : never
 
-export type OverrideConfig<
+type DefaultOverrideConfig<
   SchemeKey extends SchemeKeyType,
   Scheme extends SchemeType,
-  UserScheme extends Partial<Scheme> = Partial<Scheme>
+  UserScheme extends Partial<Scheme>
 > = {
   identify: typeof OverrideSymbol
   schemeKey: SchemeKey
   overrideScheme: OverrideScheme<Scheme, UserScheme>
 }
+
+export type OverrideConfig<
+  SchemeKey extends SchemeKeyType,
+  Scheme extends SchemeType,
+  UserScheme extends Partial<Scheme> = Partial<Scheme>
+> = SchemeKey extends infer K
+  ? Scheme extends infer S
+    ? UserScheme extends infer US
+      ? US extends Partial<S>
+        ? S extends SchemeType
+          ? K extends SchemeKeyType
+            ? DefaultOverrideConfig<K, S, US>
+            : DefaultOverrideConfig<SchemeKey, Scheme, UserScheme>
+          : DefaultOverrideConfig<SchemeKey, Scheme, UserScheme>
+        : DefaultOverrideConfig<SchemeKey, Scheme, UserScheme>
+      : DefaultOverrideConfig<SchemeKey, Scheme, UserScheme>
+    : DefaultOverrideConfig<SchemeKey, Scheme, UserScheme>
+  : DefaultOverrideConfig<SchemeKey, Scheme, UserScheme>
 
 export type ValidSchemeKey<SchemeKey extends SchemeKeyType, Scheme extends SchemeType> =
   | undefined
