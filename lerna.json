@@ -1,12 +1,16 @@
 {
-  "version": "0.0.28",
+  "version": "0.0.29",
   "npmClient": "yarn",
   "command": {
     "version": {
-      "allowBranch": ["master"],
+      "allowBranch": [
+        "master"
+      ],
       "message": "chore(release): publish %s"
     }
   },
   "useWorkspaces": true,
-  "packages": ["packages/*"]
+  "packages": [
+    "packages/*"
+  ]
 }
