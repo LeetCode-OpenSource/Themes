@@ -4,9 +4,13 @@ import { getSchemeKey } from './get-scheme-key'
 
 export function getScheme<SchemeKey extends SchemeKeyType, Scheme extends SchemeType>(
   schemeConfig: SchemeConfig<SchemeKey, Scheme>,
-  schemeKey: ValidSchemeKey<SchemeKey, Scheme> = schemeConfig.defaultScheme,
-): Scheme {
-  if (isOverrideConfig<SchemeKey, Scheme>(schemeKey)) {
+  schemeKey?: ValidSchemeKey<SchemeKey, Scheme>,
+): Scheme
+export function getScheme(
+  schemeConfig: SchemeConfig<SchemeKeyType, SchemeType>,
+  schemeKey: ValidSchemeKey<SchemeKeyType, SchemeType> = schemeConfig.defaultScheme,
+): SchemeType {
+  if (isOverrideConfig(schemeKey)) {
     const currentSchemeKey = getSchemeKey(schemeKey, schemeConfig)
     const currentScheme = getBasicScheme(schemeConfig, currentSchemeKey)
 

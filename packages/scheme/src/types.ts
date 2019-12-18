@@ -9,9 +9,18 @@ export type SchemeConfig<Key extends SchemeKeyType, Scheme extends SchemeType> =
   schemes: Record<Key, Scheme | (() => Scheme)>
 }>
 
-export type OverrideScheme<Scheme extends SchemeType, UserScheme extends Partial<Scheme>> =
-  | UserScheme
-  | ((currentScheme: Scheme) => UserScheme)
+export type OverrideScheme<
+  Scheme extends SchemeType,
+  UserScheme extends Partial<Scheme>
+> = Scheme extends infer S
+  ? UserScheme extends infer US
+    ? US extends Partial<S>
+      ? S extends SchemeType
+        ? US | ((currentScheme: S) => US)
+        : never
+      : never
+    : never
+  : never
 
 export type OverrideConfig<
   SchemeKey extends SchemeKeyType,
