@@ -18,6 +18,7 @@ export interface SetupEmotionResult<ColorsSchemeKey extends SchemeKeyType, Color
   ColorsConsumer: ComponentType<{ children: (colors: ColorsScheme) => ReactNode }>
 
   useColors: (schemeKey?: ColorsSchemeKey) => ColorsScheme
+  useColorKey: () => ColorsSchemeKey
 
   styled: CreateStyled<{ colors: ColorsScheme }>
   globalStyle: <EmotionTheme extends { colors: ColorsScheme }>(

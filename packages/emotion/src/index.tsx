@@ -17,6 +17,10 @@ export function setupEmotion<
     return useContextSchemeConfig(config.colors)
   }
 
+  function useColorKey() {
+    return React.useContext(config.colors.Context)
+  }
+
   function ColorsConsumer({ children }: { children: (colors: ColorsScheme) => React.ReactNode }) {
     const Consumer = config.colors.Context.Consumer
 
@@ -60,6 +64,7 @@ export function setupEmotion<
     styled,
     globalStyle,
     useColors,
+    useColorKey,
     ColorsConsumer,
     ColorsProvider,
   }
