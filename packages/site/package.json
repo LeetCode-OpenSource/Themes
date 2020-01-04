@@ -6,9 +6,9 @@
   "private": true,
   "repository": "https://github.com/LeetCode-OpenSource/themes/tree/master/packages/site",
   "keywords": [],
-  "main": "dist/index.js",
   "scripts": {
-    "build": "yarn run clean && parcel build ./index.html --out-dir ./dist --public-url ./",
+    "build": "run-s clean build:site",
+    "build:site": "parcel build ./index.html --out-dir ./dist --public-url ./",
     "clean": "rm -rf ./dist",
     "dev": "parcel ./index.html",
     "lint:tsc": "tsc -p tsconfig.json --noEmit",
