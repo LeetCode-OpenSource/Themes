@@ -1,4 +1,4 @@
-import { getScheme, override, SchemeConfig } from '../'
+import { getScheme, override, SchemeConfig } from '@themes/scheme'
 
 describe('get-scheme', () => {
   describe('functional', () => {

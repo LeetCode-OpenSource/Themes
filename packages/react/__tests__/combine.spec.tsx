@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { create } from 'react-test-renderer'
-import { override, SchemeConfig } from '@themes/scheme'
 
-import { combine } from '../'
+import { override, SchemeConfig } from '@themes/scheme'
+import { combine } from '@themes/react'
 
 describe('combine', () => {
   type ButtonType = 'normal' | 'primary'

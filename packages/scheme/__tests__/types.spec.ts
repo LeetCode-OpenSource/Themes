@@ -1,6 +1,6 @@
 import { assert, IsExact } from 'conditional-type-checks'
 
-import { ValidSchemeKey } from '../src'
+import { ValidSchemeKey } from '@themes/scheme'
 
 describe('ValidSchemeKey', () => {
   type NormalButtonType = 'normal' | 'normal2'

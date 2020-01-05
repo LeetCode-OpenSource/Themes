@@ -1,4 +1,4 @@
-import { getSchemeKey, override, SchemeConfig } from '../'
+import { getSchemeKey, override, SchemeConfig } from '@themes/scheme'
 
 describe('get-scheme-key', () => {
   type ButtonType = 'normal' | 'primary'

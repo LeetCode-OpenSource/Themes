@@ -1,8 +1,8 @@
 import * as React from 'react'
-import { SchemeConfig } from '@themes/scheme'
-
-import { combine, createSchemeConfigByContext } from '../'
 import { create } from 'react-test-renderer'
+
+import { SchemeConfig } from '@themes/scheme'
+import { combine, createSchemeConfigByContext } from '@themes/react'
 
 describe('create-scheme-config-by-context', () => {
   type SizeType = 'sm' | 'lg'

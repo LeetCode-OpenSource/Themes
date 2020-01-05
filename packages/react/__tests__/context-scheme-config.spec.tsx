@@ -1,8 +1,8 @@
 import * as React from 'react'
-import { SchemeConfig } from '@themes/scheme'
 import { create } from 'react-test-renderer'
 
-import { combine, createContextSchemeConfig, useContextSchemeConfig } from '../'
+import { SchemeConfig } from '@themes/scheme'
+import { combine, createContextSchemeConfig, useContextSchemeConfig } from '@themes/react'
 
 describe('context-scheme-config', () => {
   type ColorType = 'dark' | 'light'
