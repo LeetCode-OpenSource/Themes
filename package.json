@@ -29,13 +29,11 @@
   },
   "lint-staged": {
     "**/package.json": [
-      "yarn run format:package",
-      "git add"
+      "yarn run format:package"
     ],
     "*.{ts,tsx}": [
       "prettier --write",
-      "yarn run lint:eslint",
-      "git add"
+      "yarn run lint:eslint"
     ]
   },
   "devDependencies": {
