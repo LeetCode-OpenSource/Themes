@@ -23,7 +23,9 @@
   "devDependencies": {
     "@themes/scheme": "^0.0.32",
     "@types/react-test-renderer": "^16.9.1",
-    "react-test-renderer": "^16.12.0",
-    "ts-essentials": "^6.0.4"
+    "react-test-renderer": "^16.12.0"
+  },
+  "dependencies": {
+    "ts-essentials": "^6.0.5"
   }
 }
