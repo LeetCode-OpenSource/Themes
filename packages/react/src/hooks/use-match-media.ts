@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 
 export function useMatchMedia(query: string): boolean {
-  if (typeof window === 'undefined') {
+  if (typeof matchMedia !== 'function') {
     return false
   }
 
