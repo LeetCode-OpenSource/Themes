@@ -21,7 +21,7 @@
     "@emotion/styled": "^10.0.17",
     "@themes/react": "^0.0.10",
     "@themes/scheme": "^0.0.7",
-    "emotion-theming": "^10.0.19",
+    "emotion-theming": "^11.0.0",
     "react": "^16.10.2"
   },
   "devDependencies": {
@@ -29,6 +29,6 @@
     "@emotion/styled": "^10.0.17",
     "@themes/react": "^0.0.34",
     "@themes/scheme": "^0.0.34",
-    "emotion-theming": "^10.0.19"
+    "emotion-theming": "^11.0.0"
   }
 }
