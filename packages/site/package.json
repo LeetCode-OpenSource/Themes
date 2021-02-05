@@ -20,7 +20,7 @@
     "@themes/emotion": "^0.0.34",
     "@themes/react": "^0.0.34",
     "@themes/scheme": "^0.0.34",
-    "emotion-theming": "^10.0.19",
+    "emotion-theming": "^11.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },
