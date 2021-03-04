@@ -43,7 +43,7 @@
     "@typescript-eslint/parser": "^2.3.2",
     "conditional-type-checks": "^1.0.5",
     "eslint": "^6.5.1",
-    "eslint-config-prettier": "^6.3.0",
+    "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "^7.16.0",
     "format-package": "^6.1.0",
